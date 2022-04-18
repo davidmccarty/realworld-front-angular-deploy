@@ -1,0 +1,17 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: realworld-front-angular-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: realworld-front-angular-dev.mk-devops.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: realworld-front-angular-service
+                port:
+                  number: 80
